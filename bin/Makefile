@@ -8,20 +8,20 @@ NPRE = 8
 
 NDIM = 3
 SOLVER = mhd
-NIMHD=1
+NIMHD=0
 HALL=0
 
 NCR = 0
 NENT =0+$(NCR)
 
-USE_FLD=1
+USE_FLD=0
 USE_M_1=0
-NGRP=1
+NGRP=0
 
 USE_TURB=0
 
 NEXTINCT = 0
-NPSCAL = 2
+NPSCAL = 0
 NDUST  = 0
 NDUSTPSCAL=0
 GROWTH = 0
@@ -31,15 +31,15 @@ NENER = $(NENT)+$(NGRP)
 NGROUPS = 0
 NIONS = 0
 
-#PATCH = ../patch/passive_diffuse/diffu_collapse:../patch/collapse
-#PATCH = ../patch/collapse
+PATCH=../patch/collapse/
+#PATCH = 
 
 GRACKLE = 0
 EXEC = ramses
 
 MPI = 1
-COMP = "GNU"
-#COMP = "INTEL"
+#COMP = "GNU"
+COMP = "INTEL"
 
 
 ifeq ($(NIMHD),1)
@@ -203,7 +203,7 @@ endif
 # Sources directories are searched in this exact order
 BINDIR = .
 #VPATH = $(shell [ -z $(PATCH) ] || find $(PATCH) -type d):../$(SOLVER):../dust:../dust/growth:../turb:../cr:../fld:../nimhd:../aton:../rt:../hydro:../pm:../poisson:../amr
-VPATH = ../patch/passive_diffuse/diffu_collapse:../patch/collapse:../$(SOLVER):../dust:../dust/growth:../turb:../cr:../fld:../nimhd:../aton:../rt:../hydro:../pm:../poisson:../amr
+VPATH = ../patch/collapse:../mhd:../turb:../cr:../fld:../nimhd:../aton:../rt:../hydro:../pm:../poisson:../amr
 #############################################################################
 # All objects
 MODOBJ = amr_parameters.o amr_commons.o random.o pm_parameters.o pm_commons.o poisson_parameters.o 
@@ -236,7 +236,7 @@ HYDROOBJ = init_hydro.o init_flow_fine.o write_screen.o output_hydro.o courant_f
            uplmde.o umuscl.o interpol_hydro.o godunov_utils.o condinit.o hydro_flag.o hydro_boundary.o \
            boundana.o read_hydro_params.o synchro_hydro_fine.o \
            multigroup.o m1_utils.o \
-           radiative_transfer_bicg.o radiation_boundary.o cooling_module_frig.o \
+           radiative_transfer_bicg.o radiation_boundary.o cooling_module_frig.o\
 	   crdiffusion.o crdiff_split.o crdiffusion_fine.o	
 # RT objects
 RTOBJ = rt_init_hydro.o rt_init_xion.o rt_init.o rt_init_flow_fine.o rt_output_hydro.o rt_godunov_fine.o \
