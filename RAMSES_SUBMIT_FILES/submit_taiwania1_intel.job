@@ -1,0 +1,19 @@
+#!/bin/bash
+#PBS -l nodes=10:ppn=40
+#PBS -N ramses3d
+#PBS -q ct400
+#PBS -P MST108280 
+#PBS -l walltime=96:00:00
+#PBS -m abe
+#PBS -M daniellin456@gmail.com
+#PBS -o out
+#PBS -e err
+
+cd $PBS_O_WORKDIR
+
+module purge
+module load intel/2018_u1
+module load mpi/openmpi-3.0.0/intel2018u1
+
+mpirun -n 400 ramses3d run.nml 1>>log 2>&1
+
