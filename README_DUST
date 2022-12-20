@@ -1,0 +1,57 @@
+DUST DYNAMICS MULTIGRAIN solver (Lebreuilly et al., 2019)
+
+This solver was develloped by Ugo Lebreuilly, Benoit Commercon and Guillaume Laibe to treat dust dynamics in the diffusion approximation.
+You can use it as long as you refer to Lebreuilly et al., 2019 if you publish results obtained with it.
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!!/!\ The charged dust and the growth are not ready to use yet !!
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+Domain of validity :
+It is valid in the diffusion and terminal velocity approximation. i.e when tstop << tdyn.
+
+To set dust in your setup you should have NDUST>0 in the makefile, it's value corresponds to the number of dust species that you want to use.
+You can also set one or more dust passive scalar by setting NDUSTPSCAL = 1 or more. These passive scalars will be advected at the dust velocity v + vdrift
+
+You can set the following parameters in &DUST_PARAMS in your namelist
+
+
+  ! Dust related parameters
+  
+  logical :: K_drag = .false.                            ! Activate linear drag
+  logical :: update_eint=.true.                          ! Update Eint according to eq. 10c of Lebreuilly et al. 2019
+  logical :: dust_growth=.false.                         ! Activate dust_growth
+  logical :: smoluchowski =.false.                       ! Activate Smoluchowski growth (needs ndustpscal>1 and dust_growth)  
+  logical :: stepinski =.false.                          ! Activate Stepinski growth (needs ndustpscal>1 and dust_growth)
+  logical :: charged_dust_dynamics=.false.               ! Activate charged grains dynamics (only for nimhd)
+  real(dp):: v_frag =1500.0d0                            ! Fragmentation Velocity in cm /s (for Stepinski)
+  logical :: mrn = .false.                               ! Use a analytical initial dust distribution
+  logical :: dust_diffusion_test=.false.                 ! For barrenblatt test only
+  logical :: dust_not_pscal= .false.                     ! Do not advect the dust in godfine
+  real(dp),dimension(1:ndust)  :: K_dust = 1.0_dp        ! Linear drag coefficient
+  real(dp),dimension(1:ndust)  :: grain_size = 1.0d-7    ! Dust properties (1:ndust) where the sizes of the grains are stocked
+  real(dp),dimension(1:ndust)  :: grain_dens = 1.0d0     ! Dust properties (1:ndust) where the intrinsic of the grains are stocked
+  real(dp),dimension(1:ndust)  :: Z_dust     = 1.0d0     ! Dust properties (1:ndust) where the grain charges are stocked (if not self consistent calculation)
+  real(dp),dimension(1:ndust)  :: dust_ratio= 0.01_dp    ! To start with the usual value
+  real(dp) :: size_min  = 5.0d-7                         ! Min grain size when using mrn
+  real(dp) :: size_max  = 2.5d-5                         ! Max grain size when using mrn
+  real(dp) :: mrn_index = 3.5d0                          ! Power law index when using mrn such as n = A s^(-mrn_index)
+  integer  :: slope_dust = 1                             ! 1 for upwind, 2 for minmod, 7 for vanleer
+  logical  :: kwok_correction=.false.                    ! Apply Kwok(1975), Draine & Salpeter (1979)  correction for supersonic flows
+  logical  :: reduce_wdust=.false.                       ! Activate the drift velocity regularisation
+  logical  :: reduce_tstop =.false.                      ! Activate the stopping time threshold
+  logical  :: vmax_barycenter=.false.                    ! Set the maximum delta v to f_vmax x V
+  logical  :: vmax_cs =.false.                           ! Set the maximum delta v to f_vmax x cs
+  logical  :: vmax_dust_lim=.false.                      ! Set absolute limit for delta v
+  real(dp) :: vdust_max=1.d5                             ! Maximum dust drift velocity when using reduce_wdust
+  real(dp) :: Stokes_max=0.01                            ! Maximum stopping time when using reduce_tstop
+  real(dp) :: f_vmax=1.0d0                               ! fraction of maximum velocity allowed
+  real(dp) :: smalleps = 1e-10                           ! Minimum dust ratio per dust species
+  real(dp) :: courant_factor_dust=0.5d0                  ! Safety courant parameter to ensure the stability of the scheme
+  real(dp) :: reduce_dfrac=1.0d0                         ! Allows to decrease the dust ratio outside the cloud eps= eps/reduce_dfrac (only implemented for the collapse)
+
+
+For any question related to this module please contact me at ugo.lebreuilly@cea.fr
+Note that there is no guarantee that it works for any setup in this code as it has been predominantely use for collapse/turbulent cloud simulations.

@@ -1,0 +1,6 @@
+-attention au nextinct (pour prendre H2)
+
+-attention à la définition des différents nfirst
+
+-vérifier qui est "advecté" et si l'advection est bonne (hlld)
+

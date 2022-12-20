@@ -1,0 +1,13 @@
+ph_collapse patch version not updated with fld and hall
+pm/sink_particle.f90: prevents sink escape
+
+amr/read_params.f90: added t_nograv when reading namelist
+poisson/poisson_parameters.f90: added t_nograv=0.
+mhd/godunov_fine.f90: added gravity switch at t_nograv
+amr/amr_step.f90 added gravity switch at t_nograv 
+
+
+** writes added for test
+patch/collapse/cooling_fine.f90
+patch/collapse/read_hydro_parameters.f90
+mhd/output_hydro.f90

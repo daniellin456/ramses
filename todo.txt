@@ -1,0 +1,35 @@
+Ajouter le dossier dust : DONE
+
+
+Ajouter les modifs dust dans les dossiers suivants :
+
+amr DONE
+fld DONE
+mhd DONE (Reverifier umuscl plus tard a tete reposee)
+nimhd DONE 
+pm DONE
+
+verifier toutes les EOS (en cas d'ajouts nouveaux)
+
+refaire les patchs -> dust_tests
+mettre les tests suivants :
+
+settling DONE
+
+wave, shock  & diffusion
+
+Tester
+
+Nettoyer
+
+- > Creer un dust commons
+- > Enlever les variables inutiles
+- > Verifier si des optis sont possibles
+- > Donner la possibilite d'outputer ou non vdust
+- > Renommer v_dust -> vrdift
+- > Dust velocity est probablement a rendre plus elegant 
+
+- > Que faire du patch dust ...
+
+
+Merger

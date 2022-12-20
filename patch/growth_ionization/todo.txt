@@ -1,0 +1,26 @@
+Correctly communicate and interpolate var_resit
+
+- In load_balance defrag ok
+- In upl ok
+- Create interpol_res ok
+- In amr step ok
+- Refine utils TODO
+
+
+Create wrapper for the computation of the ionization and the ionization routines ok
+
+Correctly retrieve eta_A etc in the umusucl routine and anywhere the resistivities are computed. Maybe, ne ni and chi should be put in uold to simplify everything TODO
+
+Then actually compute them ^^
+
+
+For now var_resist has 6 variables so that we can dump ni, ne and psi and verify that they are well implemented.
+
+For now psi0 is computed. The value doesn't seem absurd
+-> Need to carry on with psi :)
+-> Step after compute ni, ne and psi for a collapse and compare with the expected result
+
+Once we trust ni,ne and psi, we can compute the resistivities.
+
+
+TODO make an alert with the dust : NCOAG > 0 must have NDUST=0 and vice-versa.

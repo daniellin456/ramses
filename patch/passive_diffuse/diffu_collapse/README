@@ -1,0 +1,60 @@
+patch: seeded passive scalar to for diffusion study
+
+modification by ynl 04/2022
+derived from patch/collapse
+
+-------------------------------------------------------------------
+*** init_hydro.f90 *** from mhd/init_hydro
+### subroutine init_hydro ###
+1. Discard any original passive scalars
+2. if seed_high_T = true, turn on passive scalar for temperature higher then T_seed
+3. if seed_pscal = true, call init_passive to turn on passive scalar at specific locations
+
+
+# seed_pscal: insert seeds at specified locations at restart
+
+# seed_high_T: insert seeds at region above given temperature at restart
+
+# If seed_pscal or seed_high_T, allow for a different nvar at restart
+
+### subroutine init_passive(ilevel) ###
+# adapted from mhd/init_flow_fine/init_flow_fine
+
+-------------------------------------------------------------------
+*** read_hydro_params.f90 *** from patch/collapse/read_hydro_params.f90
+read passive scalar parameters from files
+
+seed_pscal (logical): seed passive scalars at given positions upon initialization 
+seed_high_T (logical): seed passive scalars if temperature surpasses some given threshold
+i_seed (integer): number of seeds, must <= NPSCAL
+T_seed (float): thresholds for high temperature recorder
+evaporate_pscal:
+T_evaporate:
+
+
+from file "seed_passive.dat"
+first line: nseeds
+second line: seed_type * nseeds
+0: point; 1: ring
+
+
+
+
+-------------------------------------------------------------------
+*** hydro_parameters.f90 *** from mhd/hydro_parameters.f90 
+
+declare relevent parameters for seeding passive scalars during initialization (restart)
+
+nseeds
+seed_type
+x_seed
+ax_seed
+r_seed
+i_seed
+T_seed
+
+
+
+-------------------------------------------------------------------
+*** 
+

@@ -1,0 +1,46 @@
+change 8+ in firstindex_er for a bunch of routines !!!! (except umuscl)
+
+
+cooling_fine.f90: ajout modules de Valeska pour l'extinction et la chimie. Voir avec Valeska si il faut updater.
+
+
+- changer NENER>NRAD en NENER>NGRP
+- changer NVAR>8+NRAD en NPSCAL>0
+- pour l'instant q(Er)->Er alors que q(nener)->P. Changer ? umuscl (ctoprim, trace...), godunov_utils...
+
+- changer umuscl pour M1 car manque termes dans sE... ?!
+- mhd/courant_fine : rajouter erad_tot, eener_tot, ekin_tot
+- mhd/write_screen : affichage avec nener, ngrp...
+
+- nettoyer tous les call units -> use units_commons
+
+- echanger pour stellar_photon
+
+IMPLICIT NONE !!!!
+rshock_lowrie -> mhd/hydro_boundary index 1 out of bounds
+dirac3d -> increase ngridmax ?
+
+
+patch_rhd files
+--------------
+pm_commons.f90 -> A FINIR ?
+
+
+collapse files (reste à faire turb -> Andrew et DTU -> Benoit)
+--------------
+
+sink
+----
+
+tracer particles et extinction a verifier (Benoit)
+
+nvector=15 ?
+nexpand=4 ?
+
+
+HOWTO (upstream est le master du bitbucket de Romain : git remote add upstream https://bitbucket.org/rteyssie/ramses)
+------
+git checkout master
+git pull upstream master
+git checkout fld
+git merge master

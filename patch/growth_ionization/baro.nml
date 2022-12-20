@@ -1,0 +1,127 @@
+s namelist contains various input parameters for RAMSES runs
+
+&RUN_PARAMS
+verbose=.false.
+hydro=.true.
+poisson=.true.
+nrestart=0
+ncontrol=1
+nremap=2
+nsubcycle=5*1,35*2
+fld=.false.
+sink=.true.
+clumpfind=.true.
+pic=.true.
+/
+
+&AMR_PARAMS 
+levelmin=5
+levelmax=14
+ngridmax=100000
+npartmax=50000
+nexpand=30*4
+/
+
+&BOUNDARY_PARAMS
+nboundary = 6
+bound_type= 2, 2, 2, 2, 2, 2
+ibound_min=-1,+1,-1,-1,-1,-1
+ibound_max=-1,+1,+1,+1,+1,+1
+jbound_min= 0, 0,-1,+1,-1,-1
+jbound_max= 0, 0,-1,+1,+1,+1
+kbound_min= 0, 0, 0, 0,-1,+1
+kbound_max= 0, 0, 0, 0,-1,+1
+/
+
+&SINK_PARAMS
+nsinkmax=50000
+create_sinks=.true.
+accretion_scheme='threshold'
+n_sink=3d13
+mass_sink_direct_force=0. !1.d7
+ir_cloud=4
+c_acc=0.1
+/
+
+&CLUMPFIND_PARAMS
+density_threshold=3d12
+/
+
+&BOUNDARY_PARAMS
+/
+
+&INIT_PARAMS
+bb_test=.true.
+mass_c=1. !in solar mass
+alpha_dense_core=0.25
+beta_dense_core=0.04
+crit=0.3
+delta_rho=0.1
+theta_mag=30.0 !angle between magnetic field and rotation axis
+/
+
+&OUTPUT_PARAMS
+foutput=50
+fbackup=500
+noutput=2
+tout=0,100
+write_conservative=.true.
+/
+
+&POISSON_PARAMS 
+gravity_type=0
+epsilon=1d-4
+/
+
+&HYDRO_PARAMS
+gamma=1.666667
+courant_factor=0.8
+slope_type=1
+scheme='muscl'
+riemann='hlld'
+riemann2d='hlld'
+switch_solv=100.
+switch_solv_dens=3.
+pressure_fix=.false.
+/
+
+&PHYSICS_PARAMS
+T2_star=10.  !in K
+n_star=1.d-13
+barotrop=.true.
+analytical_barotrop=.true.
+/
+
+&REFINE_PARAMS 
+jeans_refine=20*10
+sink_refine=.true.
+interpol_var=1
+interpol_type=1
+/
+
+
+&RADIATION_PARAMS
+tr_floor=10
+/
+
+&NONIDEALMHD_PARAMS
+nambipolar=1
+coefad=0.1d0
+nmagdiffu=0
+nminitimestep=1
+ntestDADM=0
+use_x2d=1
+coefalfven=0.3
+rho_threshold=1.0e5
+debug_ionis=.true.
+epsilon_ionis = 1d-6
+nitermax_ionis=50
+icy_grains=.false.
+therm_ions="K"
+/
+
+
+
+
+
+
