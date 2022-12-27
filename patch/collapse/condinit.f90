@@ -578,6 +578,7 @@ subroutine condinit(x,u,dx,nn)
      endif
 
      !Temp = tr_floor ! TODO: Change to other runtime parameter (init_temperature)
+     if ( myid .eq. 1 ) write(*, *) 'Uniform background temperature', Bg_Temp
      Temp = Bg_Temp
 
      DO i=1,nn
