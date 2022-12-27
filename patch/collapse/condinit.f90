@@ -615,7 +615,7 @@ subroutine condinit(x,u,dx,nn)
               q(i,nvar) = ee
            else
               !q(i,5) = q(i,1) *(1.0d0-sum_dust)* C_s**2/(gamma-1.0d0)
-              q(i,5) = q(i,1) *(1.0d0-sum_dust)* (Temp/scale_T2)**2/(gamma-1.0d0)
+              q(i,5) = q(i,1) *(1.0d0-sum_dust)* (Temp/scale_T2)/(gamma-1.0d0)
               q(i,nvar) = q(i,5)
            endif
         else
@@ -637,7 +637,7 @@ subroutine condinit(x,u,dx,nn)
               q(i,nvar) = ee
            else
               !q(i,5) = q(i,1) *(1.0d0-sum_dust)* C_s**2/(gamma-1.0d0)
-              q(i,5) = q(i,1) *(1.0d0-sum_dust)* (Temp/scale_T2)**2/(gamma-1.0d0)
+              q(i,5) = q(i,1) *(1.0d0-sum_dust)* (Temp/scale_T2)/(gamma-1.0d0)
               q(i,nvar) = q(i,5)
            endif
         endif
