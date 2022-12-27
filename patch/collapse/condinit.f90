@@ -336,6 +336,7 @@ subroutine condinit(x,u,dx,nn)
 
 
         if(myid == 1)  write(*,*) 'T_0 (K) ', Tr_floor
+        if(myid == 1)  write(*,*) 'Uniform background temperature', Bg_Temp
         if(myid == 1)  write(*,*)  'C_s (code units) ', C_s
 
         !cont_ic is the density contrast between the edge of the cloud and the intercloud medium
@@ -578,9 +579,7 @@ subroutine condinit(x,u,dx,nn)
      endif
 
      !Temp = tr_floor ! TODO: Change to other runtime parameter (init_temperature)
-     if (myid == 1) write(*,*) 'Uniform background temperature', Bg_Temp
      Temp = Bg_Temp
-     C_s = sqrt( Temp / scale_T2 )
 
      DO i=1,nn
 
@@ -615,7 +614,7 @@ subroutine condinit(x,u,dx,nn)
               !        q(i,5) = q(i,5) * cont_ic 
               q(i,nvar) = ee
            else
-              q(i,5) = q(i,1) *(1.0d0-sum_dust)* C_s**2/(gamma-1.0d0)
+              q(i,5) = q(i,1) *(1.0d0-sum_dust)* (Temp/scale_T2)**2/(gamma-1.0d0)
               q(i,nvar) = q(i,5)
            endif
         else
@@ -636,7 +635,7 @@ subroutine condinit(x,u,dx,nn)
               q(i,5   ) = ee
               q(i,nvar) = ee
            else
-              q(i,5) = q(i,1) *(1.0d0-sum_dust)* C_s**2/(gamma-1.0d0)
+              q(i,5) = q(i,1) *(1.0d0-sum_dust)* (Temp/scale_T2)**2/(gamma-1.0d0)
               q(i,nvar) = q(i,5)
            endif
         endif
