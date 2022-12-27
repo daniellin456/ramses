@@ -577,7 +577,8 @@ subroutine condinit(x,u,dx,nn)
         first = .false.
      endif
 
-     Temp = tr_floor
+     !Temp = tr_floor ! TODO: Change to other runtime parameter (init_temperature)
+     Temp = Bg_Temp
 
      DO i=1,nn
 

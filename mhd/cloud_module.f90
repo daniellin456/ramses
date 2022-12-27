@@ -16,6 +16,7 @@ module cloud_module
   real(dp)::ff_act=1.         !freefall time / Alfven crossing time
   real(dp)::ff_vct=1.         !freefall time / Vrms crossing time
   real(dp)::theta_mag=0.      !angle between magnetic field and rotation axis
+  real(dp)::Bg_Temp=0.        !uniform background temperature
 
   real(dp):: C2_vis=0.0d0 !Von Neumann & Richtmeyer artificial viscosity coefficient 3 en principe
   real(dp):: alpha_dense_core=0.5d0
