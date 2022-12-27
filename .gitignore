@@ -1,3 +1,5 @@
 *.o
 *.mod
+*.idea
 ramses3d
+**/Makefile
