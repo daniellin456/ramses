@@ -132,6 +132,9 @@ module amr_parameters
   real(dp)::zmax_cone=2.0
 
   ! Cosmology and physical parameters
+  real(dp)::power_m=0.0       ! power index of density
+  real(dp)::power_n=0.0       ! power index of temperature
+  real(dp)::lambda_0=0.0      ! Lambda_0 in parametric cooling functions
   real(dp)::boxlen_ini        ! Box size in h-1 Mpc
   real(dp)::omega_b=0.045     ! Omega Baryon
   real(dp)::omega_m=1.0D0     ! Omega Matter

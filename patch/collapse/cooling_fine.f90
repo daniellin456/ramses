@@ -791,6 +791,7 @@ subroutine coolfine1(ind_grid,ngrid,ilevel)
 !        call solve_cooling(nH,T2,Zsolar,boost,dtcool,delta_T2,nleaf)
 ! USE Audit & Hennebelle cooling function
         call solve_cooling_frig(nH,T2,Zsolar,boost,dtcool,delta_T2,nleaf)
+        !call solve_cooling_parametric(nH,T2,Zsolar,boost,dtcool,delta_T2,nleaf)
 
 !           write(*,*) 'solve cooling no RT'
      endif
