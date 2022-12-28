@@ -9,9 +9,9 @@
 #SBATCH --error=err		        	# (-e) Path to the standard error ouput
 #SBATCH --mail-type=ALL				# Mail events (NONE, BEGIN, END, FAIL, ALL)
 #SBATCH --mail-user=daniellin456@gmail.com	# Where to send mail.  Set this to your email address
+#SBATCH --men=720GB
 
 module purge
 module load compiler/intel/2022
 module load IntelMPI/2021.6
-mpirun -np 560 ramses3d run.nml 1>>log 2>&1
-
+mpiexec.hydra -np 560 ./ramses3d run.nml 1>>log 2>&1
