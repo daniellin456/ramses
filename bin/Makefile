@@ -31,8 +31,8 @@ NENER = $(NENT)+$(NGRP)
 NGROUPS = 0
 NIONS = 0
 
-PATCH=../patch/collapse/
-#PATCH = 
+#PATCH=../patch/collapse/
+PATCH = 
 
 GRACKLE = 0
 EXEC = ramses
