@@ -15,5 +15,5 @@ module purge
 module load intel/2018_u1
 module load mpi/openmpi-3.0.0/intel2018u1
 
-mpirun -n 400 ramses3d run.nml 1>>log 2>&1
+mpirun -n 400 ./ramses3d run.nml > log
 
