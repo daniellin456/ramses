@@ -469,7 +469,7 @@ subroutine cooling_low(T,n,ref)
   !      froidc=0.d0
 
 
-  ref= chaud*n - (n**2)*(froid + froidrec) !!!+ froidc)
+  ref= cooling_factor * ( chaud*n - (n**2)*(froid + froidrec) )!!!+ froidc)
 
   return
 
