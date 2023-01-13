@@ -1,5 +1,11 @@
 *.o
 *.mod
+bin/.swk
+bin/.swl
+bin/.swm
+bin/.swn
+bin/.swo
+bin/.swp
 *.idea
 ramses3d
 **/Makefile
