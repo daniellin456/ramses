@@ -1,0 +1,17 @@
+#!/bin/bash
+#PBS -l nodes=1:ppn=32
+#PBS -N ramses3d
+#PBS -q workq
+#PBS -l walltime=96:00:00
+#PBS -m abe
+#PBS -M daniellin456@gmail.com
+#PBS -o out
+#PBS -e err
+
+cd $PBS_O_WORKDIR
+
+module purge
+module load intel/19.5/281/x86_64
+module load openmpi/4.0.2/intel_2019/x86_64
+mpirun -n 32 ./ramses3d run.nml > log
+
