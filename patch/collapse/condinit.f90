@@ -337,6 +337,9 @@ subroutine condinit(x,u,dx,nn)
 
         if(myid == 1)  write(*,*) 'T_0 (K) ', Tr_floor
         if(myid == 1)  write(*,*) 'Uniform background temperature', Bg_Temp
+        if(myid == 1)  write(*,*) 'Power index of density', power_m
+        if(myid == 1)  write(*,*) 'Power index of temperature', power_n
+        if(myid == 1)  write(*,*) 'Initial cooling rate', lambda_0
         if(myid == 1)  write(*,*)  'C_s (code units) ', C_s
 
         !cont_ic is the density contrast between the edge of the cloud and the intercloud medium
