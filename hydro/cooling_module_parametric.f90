@@ -108,7 +108,7 @@ subroutine  calc_by_parametric_func(NN,TT,dt_tot_unicode)
     ! eps - a small offset of T to find gradient in T
     eps = 1d-5
     ! TODO : Parametric cooling function
-    TT = (lambda_0 / alpha_ct * NN ** power_m * dt_tot * (1-power_n) + TT ** (1-power_n)) ** (1/(1-power_n))
+    TT = (-lambda_0 / alpha_ct * NN ** power_m * dt_tot * (1-power_n) + TT ** (1-power_n)) ** (1/(1-power_n))
 
    !  iter  = 0 ; temps = 0.
    !  do while ( temps < dt_tot)
